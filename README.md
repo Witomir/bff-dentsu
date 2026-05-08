@@ -70,9 +70,7 @@ Filter and sort values are case-insensitive. Unsupported values for `type`, `col
 
 **Full URL example:**
 ```bash
-curl "http://localhost:8080/results?color=red&color=green&sort=price,desc&page=0&pageSize=20" \ 
-    -H "X-Client-Type: web"
-
+curl "http://localhost:8080/results?color=red&color=green&sort=price,desc&page=0&pageSize=20" -H "X-Client-Type: web"
 ```
 
 ### Client shaping
