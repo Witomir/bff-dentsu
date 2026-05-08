@@ -1,0 +1,25 @@
+services:
+  bff:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - pricing-service
+      - catalog-service
+    environment:
+      CATALOG_URL: http://catalog-service:8080
+      PRICING_URL: http://pricing-service:8080
+
+  pricing-service:
+    image: wiremock/wiremock:latest
+    ports:
+      - "9001:8080"
+    volumes:
+      - ./wiremock/pricing-service/mappings:/home/wiremock/mappings:ro
+
+  catalog-service:
+    image: wiremock/wiremock:latest
+    ports:
+      - "9002:8080"
+    volumes:
+      - ./wiremock/catalog-service/mappings:/home/wiremock/mappings:ro
